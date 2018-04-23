@@ -165,7 +165,7 @@ def main():
     if args.action == 'get':
         dest = osp.join(root, args.repo)
         if not osp.exists(dest):
-            cli_exec('git clone https://vacancy@github.com/vacancy/{}'.format(args.repo), cwd=root)
+            cli_exec('git clone https://dhh1995@github.com/dhh1995/{}'.format(args.repo), cwd=root)
             print('Repo {} has been cloned to {}'.format(args.repo, dest))
         else:
             print('Repo {} already exists at {}'.format(args.repo, dest))

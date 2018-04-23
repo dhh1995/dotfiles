@@ -107,7 +107,7 @@ Plugin 'derekwyatt/vim-protodef'  " Converting .h to .cpp
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'scrooloose/nerdcommenter'  " Comment
 Plugin 'majutsushi/tagbar'  " Tag list
-Plugin 'Valloric/YouCompleteMe' 
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'rizzatti/dash.vim'
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -141,7 +141,7 @@ nmap <silent> <leader>tig <Plug>IndentGuidesToggle
 let g:indent_guides_enable_on_vim_startup=1 " 随 vim 自启动
 let g:indent_guides_start_level=2           " 从第二层开始可视化显示缩进
 let g:indent_guides_guide_size=1            " 色块宽度
- 
+
 " MiniBufExplorer
 autocmd vimenter * :MBEToggle
 map <leader>tbl :MBEToggle<cr>
@@ -203,7 +203,7 @@ let g:tagbar_type_cpp = {
      \ 'kinds'     : [
          \ 'c:classes:0:1',
          \ 'd:macros:0:1',
-         \ 'e:enumerators:0:0', 
+         \ 'e:enumerators:0:0',
          \ 'f:functions:0:1',
          \ 'g:enumeration:0:1',
          \ 'l:local:0:1',
@@ -251,9 +251,9 @@ let g:UltiSnipsExpandTrigger="<c-f>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
-let g:snips_author="Jiayuan Mao"
-let g:snips_email="maojiayuan@gmail.com"
-let g:snips_github="https://github.com/vacancy"
+let g:snips_author="Honghua Dong"
+let g:snips_email="dhh19951@gmail.com"
+let g:snips_github="https://github.com/dhh1995"
 
 let g:ultisnips_python_style="google"
 let g:ultisnips_python_quoting_style="single"
@@ -298,8 +298,8 @@ highlight link multiple_cursors_visual Visual
 
 " Templates
 let g:templates_directory='$HOME/.vim/templates'
-let g:username='Jiayuan Mao'
-let g:email='maojiayuan@gmail.com'
+let g:username='Honghua Dong'
+let g:email='dhh19951@gmail.com'
 
 " 精准替换
 " 替换函数。参数说明：
@@ -333,7 +333,7 @@ nnoremap <leader>rc :call Replace(1, 0, input('Replace '.expand('<cword>').' wit
 nnoremap <leader>rcw :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
 nnoremap <leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
 
- 
+
 " 启用:Man命令查看各类man信息
 source $VIMRUNTIME/ftplugin/man.vim
 " 定义:Man命令查看各类man信息的快捷键

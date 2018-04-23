@@ -6,7 +6,7 @@ Personal dotfiles for OSX/Linux.
 Have your python3 and git installed. Execute:
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/vacancy/dotfiles/master/install)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/dhh1995/dotfiles/master/install)"
 ```
 
 ## Acknowledgements
