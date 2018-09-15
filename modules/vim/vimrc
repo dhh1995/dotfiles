@@ -40,9 +40,9 @@ set guifont=YaHei\ Consolas\ Hybrid\ 10.5
 
 " 高亮显示当前行/列
 set cursorline
-set cursorcolumn
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" set cursorcolumn
+" hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 
 " 定义鼠标模式
 set mouse=a
@@ -152,7 +152,7 @@ let g:indent_guides_start_level=2           " 从第二层开始可视化显示�
 let g:indent_guides_guide_size=1            " 色块宽度
 
 " MiniBufExplorer
-autocmd vimenter * :MBEToggle
+" autocmd vimenter * :MBEToggle
 map <leader>tbl :MBEToggle<cr>
 map <C-l> :MBEbf<cr>
 map <C-h> :MBEbb<cr>
@@ -190,7 +190,7 @@ let g:SignatureMap = {
 
 nmap <leader>tfl :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 let NERDTreeWinSize=32             " 设置 NERDTree 子窗口宽度
 let NERDTreeWinPos="left"          " 设置 NERDTree 子窗口位置
 let NERDTreeShowHidden=1           " 显示隐藏文件
@@ -200,7 +200,7 @@ let NERDTreeHighlightCursorline=1  " 高亮显示光标所在的文件
 let NERDTreeChDirMode = 2          " 当前目录的设定
 
 nnoremap <leader>ttl :TagbarToggle<CR>
-autocmd VimEnter * nested :TagbarOpen
+" autocmd VimEnter * nested :TagbarOpen
 wincmd l
 autocmd VimEnter * wincmd l  "如果不加这句，打开vim的时候当前光标会在Nerdtree区域
 let g:tagbar_vertical = 25 " 显示在Nerdtree下方
@@ -366,8 +366,8 @@ map <leader>rs :source my.vim<cr>
 nnoremap <leader>ud :GundoToggle<CR>
 
 " 配色方案
-" set background=dark
-colorscheme molokai
+set background=dark
+" colorscheme molokai
 " Change the color for comments.
 hi Comment ctermfg=246 guifg=#999999
 hi VisualNOS ctermbg=240
