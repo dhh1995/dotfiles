@@ -93,5 +93,5 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/.bin:$PATH
 alias repom="source $HOME/.bin/_repom.sh"
 alias ggst="source $HOME/.bin/_repom.sh status"
-alias gggo="source $HOME/.bin/_repom.sh go"
+alias ggo="source $HOME/.bin/_repom.sh go"
 
