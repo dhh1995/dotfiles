@@ -1,5 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+#
+HISTFILE=$HOME/.config/.zsh_history
+ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.cache/zsh/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -84,11 +87,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+# autoload -U "compinit -d $ZSH_COMPDUMP"
+compinit -u -d $ZSH_COMPDUMP
+
 [ -f ~/.config/osx_envs ] && source ~/.config/osx_envs
 [ -f ~/.config/linux_envs ] && source ~/.config/linux_envs
 [ -f ~/.config/local_envs ] && source ~/.config/local_envs
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH=$HOME/.bin:$PATH
 alias repom="source $HOME/.bin/_repom.sh"

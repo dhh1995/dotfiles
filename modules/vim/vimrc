@@ -4,6 +4,8 @@ filetype plugin on  " 根据侦测到的不同类型加载对应的插件
 
 " 让配置变更立即生效
 " autocmd BufWritePost $MYVIMRC source $MYVIMRC
+"
+set viminfo+=n~/.vim/viminfo
 
 set nocompatible          " 关闭兼容模式
 set number                " 开启行号显示
@@ -22,6 +24,7 @@ set softtabstop=4         " 让 vim 把连续数量的空格视为一个制表�
 
 set backspace=2
 set whichwrap+=<,>,h,l
+set colorcolumn=120
 
 syntax enable    " 开启语法高亮功能
 syntax on        " 允许用指定语法高亮配色方案替换默认方案
@@ -49,37 +52,16 @@ set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
 
+" enable the spell check
+set spell spelllang=en_us
+
 " 定义快捷键的前缀，即 <leader>
 let mapleader=";"
 
-" 定义快捷键到行首和行尾
-nmap LB 0
-nmap LE $
-" 定义快捷键在结对符之间跳转
-nmap <leader>M %
-
-vnoremap <leader>y "+y          " 设置快捷键将选中文本块复制至系统剪贴板
-nmap <leader>p "+p              " 设置快捷键将系统剪贴板内容粘贴至vim
-nmap <leader>q :q<CR>           " 定义快捷键关闭当前分割窗口
-nmap <leader>w :w<CR>           " 定义快捷键保存当前窗口内容
-nmap <leader>WQ :wa<CR>:q<CR>   " 定义快捷键保存所有窗口内容并退出 vim
-nmap <leader>Q :qa!<CR>         " 不做任何保存，直接退出 vim
-
-" 设置快捷键遍历子窗口
-nnoremap nw <C-W><C-W>      " 依次遍历
-nnoremap <leader>lw <C-W>l  " 跳转至右方的窗口
-nnoremap <leader>hw <C-W>h  " 跳转至方的窗口
-nnoremap <leader>kw <C-W>k  " 跳转至上方的子窗口
-nnoremap <leader>jw <C-W>j  " 跳转至下方的子窗口
-inoremap <C-l> <RIGHT>
-inoremap <C-k> <UP>
-inoremap <C-j> <DOWN>
-inoremap <C-h> <LEFT>
-
 " Slient the warnings on start for YCM.
-if has('python3')
-  silent! python3 1
-endif
+" if has('python3')
+"   silent! python3 1
+" endif
 
 " Remove the trailing spaces before saving.
 autocmd BufWritePre * %s/\s\+$//e
@@ -123,7 +105,7 @@ Plugin 'aperezdc/vim-template'  " File templates
 
 " Search and editing
 Plugin 'Lokaltog/vim-easymotion'  " Quick cursor jumping
-Plugin 'gcmt/wildfire.vim'  " Quick selection
+" Plugin 'gcmt/wildfire.vim'  " Quick selection
 Plugin 'terryma/vim-multiple-cursors'  " Multiple cursor
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'kshenoy/vim-signature'
@@ -146,12 +128,12 @@ filetype plugin indent on
 let g:Powerline_colorscheme='solarized256'
 
 " Indent Guides
-nmap <silent> <leader>tig <Plug>IndentGuidesToggle
 let g:indent_guides_enable_on_vim_startup=1 " 随 vim 自启动
 let g:indent_guides_start_level=2           " 从第二层开始可视化显示缩进
 let g:indent_guides_guide_size=1            " 色块宽度
 
 " MiniBufExplorer
+<<<<<<< HEAD
 " autocmd vimenter * :MBEToggle
 map <leader>tbl :MBEToggle<cr>
 map <C-l> :MBEbf<cr>
@@ -159,6 +141,9 @@ map <C-h> :MBEbb<cr>
 
 " FSwitch
 nmap <silent> <leader>sw :FSHere<cr>
+=======
+autocmd vimenter * :MBEToggle
+>>>>>>> origin/master
 
 " Protodef
 let g:disable_protodef_sorting=1  " 成员函数的实现顺序与声明顺序一致
@@ -188,7 +173,6 @@ let g:SignatureMap = {
         \ 'ListLocalMarkers'   :  "m?"
         \ }
 
-nmap <leader>tfl :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 " autocmd vimenter * NERDTree
 let NERDTreeWinSize=32             " 设置 NERDTree 子窗口宽度
@@ -199,7 +183,6 @@ let NERDTreeAutoDeleteBuffer=1     " 删除文件时自动删除文件对应 buf
 let NERDTreeHighlightCursorline=1  " 高亮显示光标所在的文件
 let NERDTreeChDirMode = 2          " 当前目录的设定
 
-nnoremap <leader>ttl :TagbarToggle<CR>
 " autocmd VimEnter * nested :TagbarOpen
 wincmd l
 autocmd VimEnter * wincmd l  "如果不加这句，打开vim的时候当前光标会在Nerdtree区域
@@ -247,6 +230,7 @@ let g:tagbar_sort=0           " 不按照字母顺序排序
 let g:tagbar_foldlevel=99     " 默认展开
 
 " YCM
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 let g:ycm_complete_in_comments=1                                     " 补全功能在注释中同样有效
 let g:ycm_confirm_extra_conf=0                                       " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
 let g:ycm_collect_identifiers_from_tags_files=0                      " 开启 YCM 标签补全引擎
@@ -254,17 +238,11 @@ let g:ycm_min_num_of_chars_for_completion=1                          " 从第一
 let g:ycm_cache_omnifunc=0                                           " 禁止缓存匹配项，每次都重新生成匹配项
 let g:ycm_seed_identifiers_with_syntax=1                             " 语法关键字补全
 let g:ycm_autoclose_preview_window_after_completion=1
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-inoremap <leader>; <C-x><C-o>                                        " YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
 set completeopt-=preview                                             " 补全内容不以分割子窗口形式出现，只显示补全列表
 
 let g:UltiSnipsExpandTrigger="<c-f>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-
-let g:snips_author="Honghua Dong"
-let g:snips_email="dhh19951@gmail.com"
-let g:snips_github="https://github.com/dhh1995"
 
 let g:ultisnips_python_style="google"
 let g:ultisnips_python_quoting_style="single"
@@ -278,39 +256,14 @@ let g:NERDSpaceDelims = 1
 " 默认 --fields=+iaS 不满足 YCM 要求，需改为 --fields=+iaSl
 " let g:indexer_ctagsCommandLineOptions="--c++-kinds=+l+p+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
 
-" 正向遍历同名标签
-nmap <leader>tn :tnext<CR>
-" 反向遍历同名标签
-nmap <leader>tp :tprevious<CR>
-" 基于语义的代码导航
-nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
-" 只能是 #include 或已打开的文件
-nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-" 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：global search
-nnoremap <leader>gs :CtrlSF<CR>
-map <SPACE> <Plug>(wildfire-fuel)
-vmap <S-SPACE> <Plug>(wildfire-water)
-let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]  " 适用于哪些结对符
-
-map  <leader>s <Plug>(easymotion-bd-f)            " <leader>c{char} to move to {char}
-nmap <leader>s <Plug>(easymotion-overwin-f)
-
-map  f <Plug>(easymotion-bd-w)
-nmap f <Plug>(easymotion-overwin-w)
-nmap s <Plug>(easymotion-overwin-f2)
-" map  L <Plug>(easymotion-bd-jk)
-" nmap L <Plug>(easymotion-overwin-line)
+let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_position = 'bottom'
 
 " 快捷替换
 let g:multi_cursor_start_word_key='<C-d>'
 let g:multi_cursor_next_key='<C-d>'
 highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
 highlight link multiple_cursors_visual Visual
-
-" Templates
-let g:templates_directory='$HOME/.vim/templates'
-let g:username='Honghua Dong'
-let g:email='dhh19951@gmail.com'
 
 " 精准替换
 " 替换函数。参数说明：
@@ -334,36 +287,16 @@ function! Replace(confirm, wholeword, replace)
     let replace = escape(a:replace, '/\&~')
     execute 'argdo %s/' . search . '/' . replace . '/' . flag . '| update'
 endfunction
-" 不确认、非整词
-nnoremap <leader>R :call Replace(0, 0, input('Replace '.expand('<cword>').' with: '))<CR>
-" 不确认、整词
-nnoremap <leader>rw :call Replace(0, 1, input('Replace '.expand('<cword>').' with: '))<CR>
-" 确认、非整词
-nnoremap <leader>rc :call Replace(1, 0, input('Replace '.expand('<cword>').' with: '))<CR>
-" 确认、整词
-nnoremap <leader>rcw :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
-nnoremap <leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
 
 
 " 启用:Man命令查看各类man信息
 source $VIMRUNTIME/ftplugin/man.vim
-" 定义:Man命令查看各类man信息的快捷键
-nmap <leader>man :Man 3 <cword><CR>
 
 " Disable the undo history
 " set undodir=~/.vim/undo_history/  " 保存 undo 历史。必须先行创建 .undo_history/
 " set undofile
 " 设置环境保存项
 set sessionoptions="blank,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize"
-" 保存快捷键
-"map <leader>ss :mksession! my.vim<cr> :wviminfo! my.viminfo<cr>
-map <leader>ss :mksession! my.vim<cr>
-" 恢复快捷键
-"map <leader>rs :source my.vim<cr> :rviminfo my.viminfo<cr>
-map <leader>rs :source my.vim<cr>
-
-" 调用 gundo 树
-nnoremap <leader>ud :GundoToggle<CR>
 
 " 配色方案
 set background=dark
@@ -375,4 +308,100 @@ hi Visual ctermbg=238
 hi Underlined ctermfg=246 cterm=underline
 hi StatusLine   ctermfg=246 ctermbg=253
 hi StatusLineNC ctermfg=246 ctermbg=232
+
+" Templates
+let g:templates_directory='$HOME/.vim/templates'
+let g:username='Jiayuan Mao'
+let g:email='maojiayuan@gmail.com'
+
+" Snippets
+let g:snips_author="Jiayuan Mao"
+let g:snips_email="maojiayuan@gmail.com"
+let g:snips_github="https://github.com/vacancy"
+
+" 定义快捷键到行首和行尾
+nmap LB 0
+nmap LE $
+" 定义快捷键在结对符之间跳转
+nmap <leader>M %
+
+vnoremap <leader>y "+y          " 设置快捷键将选中文本块复制至系统剪贴板
+nmap <leader>p "+p              " 设置快捷键将系统剪贴板内容粘贴至vim
+
+" 保存快捷键
+" map <leader>ss :mksession! my.vim<cr> :wviminfo! my.viminfo<cr>
+map <leader>ss :mksession! my.vim<cr>
+" 恢复快捷键
+" map <leader>rs :source my.vim<cr> :rviminfo my.viminfo<cr>
+map <leader>rs :source my.vim<cr>
+
+" nmap <leader>q :q<CR>           " 定义快捷键关闭当前分割窗口
+" nmap <leader>w :w<CR>           " 定义快捷键保存当前窗口内容
+" nmap <leader>WQ :wa<CR>:q<CR>   " 定义快捷键保存所有窗口内容并退出 vim
+" nmap <leader>Q :qa!<CR>         " 不做任何保存，直接退出 vim
+
+" 设置快捷键遍历子窗口
+" nnoremap nw <C-W><C-W>      " 依次遍历
+" nnoremap <leader>lw <C-W>l  " 跳转至右方的窗口
+" nnoremap <leader>hw <C-W>h  " 跳转至左方的窗口
+" nnoremap <leader>kw <C-W>k  " 跳转至上方的子窗口
+" nnoremap <leader>jw <C-W>j  " 跳转至下方的子窗口
+
+inoremap <C-l> <RIGHT>
+inoremap <C-k> <UP>
+inoremap <C-j> <DOWN>
+inoremap <C-h> <LEFT>
+
+" FSwitch
+nmap <silent> <leader>sw :FSHere<cr>
+nnoremap <leader>tig <Plug>IndentGuidesToggle
+nnoremap <leader>tfl :NERDTreeToggle<CR>
+nnoremap <leader>tbl :MBEToggle<cr>
+nnoremap <leader>ttl :TagbarToggle<CR>
+
+map <C-l> :MBEbf<cr>
+map <C-h> :MBEbb<cr>
+
+nnoremap <C-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>d :YcmCompleter GetDoc<CR>
+inoremap <leader>; <C-x><C-o>                                        " YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
+
+" wildfire
+" map <SPACE> <Plug>(wildfire-fuel)
+" vmap <S-SPACE> <Plug>(wildfire-water)
+" let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]  " 适用于哪些结对符
+
+map  <leader>s <Plug>(easymotion-bd-f)            " <leader>c{char} to move to {char}
+nmap <leader>s <Plug>(easymotion-overwin-f)
+
+map  f <Plug>(easymotion-bd-w)
+nmap f <Plug>(easymotion-overwin-w)
+nmap s <Plug>(easymotion-overwin-f2)
+" map  L <Plug>(easymotion-bd-jk)
+" nmap L <Plug>(easymotion-overwin-line)
+"
+" 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：global search
+nnoremap <leader>gs :CtrlSF<CR>
+
+" 正向遍历同名标签
+nmap <leader>tn :tnext<CR>
+" 反向遍历同名标签
+nmap <leader>tp :tprevious<CR>
+
+" 定义:Man命令查看各类man信息的快捷键
+nmap <leader>man :Man 3 <cword><CR>
+
+" 调用 gundo 树
+nnoremap <leader>ud :GundoToggle<CR>
+
+" 不确认、非整词
+nnoremap <leader>R :call Replace(0, 0, input('Replace '.expand('<cword>').' with: '))<CR>
+" 不确认、整词
+nnoremap <leader>rw :call Replace(0, 1, input('Replace '.expand('<cword>').' with: '))<CR>
+" 确认、非整词
+nnoremap <leader>rc :call Replace(1, 0, input('Replace '.expand('<cword>').' with: '))<CR>
+" 确认、整词
+nnoremap <leader>rcw :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
+nnoremap <leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
 
