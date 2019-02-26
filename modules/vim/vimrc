@@ -133,17 +133,7 @@ let g:indent_guides_start_level=2           " 从第二层开始可视化显示�
 let g:indent_guides_guide_size=1            " 色块宽度
 
 " MiniBufExplorer
-<<<<<<< HEAD
 " autocmd vimenter * :MBEToggle
-map <leader>tbl :MBEToggle<cr>
-map <C-l> :MBEbf<cr>
-map <C-h> :MBEbb<cr>
-
-" FSwitch
-nmap <silent> <leader>sw :FSHere<cr>
-=======
-autocmd vimenter * :MBEToggle
->>>>>>> origin/master
 
 " Protodef
 let g:disable_protodef_sorting=1  " 成员函数的实现顺序与声明顺序一致
@@ -311,13 +301,13 @@ hi StatusLineNC ctermfg=246 ctermbg=232
 
 " Templates
 let g:templates_directory='$HOME/.vim/templates'
-let g:username='Jiayuan Mao'
-let g:email='maojiayuan@gmail.com'
+let g:username='Honghua Dong'
+let g:email='dhh19951@gmail.com'
 
 " Snippets
-let g:snips_author="Jiayuan Mao"
-let g:snips_email="maojiayuan@gmail.com"
-let g:snips_github="https://github.com/vacancy"
+let g:snips_author="Honghua Dong"
+let g:snips_email="dhh19951@gmail.com"
+let g:snips_github="https://github.com/dhh1995"
 
 " 定义快捷键到行首和行尾
 nmap LB 0
